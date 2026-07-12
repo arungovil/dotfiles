@@ -49,7 +49,7 @@ vim.keymap.set("n", "<leader>Oq", "<cmd>bd<CR>", options) -- Close PR buffer
 vim.keymap.set("n", "<leader>h", "<cmd>ClaudeCodeContinue<CR>") -- Claude code (continue)
 vim.keymap.set("n", "<leader>H", "<cmd>ClaudeCode<CR>") -- Claude code (new)
 local function open_pi_terminal(cmd)
-	local split_ratio = 0.3
+	local split_ratio = 0.5
 	vim.cmd("botright vsplit")
 	vim.cmd("vertical resize " .. math.floor(vim.o.columns * split_ratio))
 	vim.cmd("terminal " .. cmd)
