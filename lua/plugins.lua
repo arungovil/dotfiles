@@ -145,6 +145,7 @@ require("lazy").setup({
 				"swift",
 				"objc",
 				"heex",
+				"zig",
 			},
 			auto_install = true,
 		},
@@ -204,6 +205,7 @@ require("lazy").setup({
 				lua = { "stylua" },
 				dart = { "dart_format" },
 				swift = { "swift" },
+				zig = { "zigfmt" },
 			},
 			format_on_save = {
 				lsp_format = "fallback",
@@ -341,6 +343,13 @@ require("lazy").setup({
 					root_markers = { "project.clj", "deps.edn", "build.boot", "shadow-cljs.edn", ".git" },
 					on_attach = on_attach,
 				},
+				zls = {
+					name = "zls",
+					cmd = { "zls" },
+					filetypes = { "zig" },
+					root_markers = { "build.zig", "zls.json", ".git" },
+					on_attach = on_attach,
+				},
 			}
 
 			-- Setup all LSP servers with new API
@@ -413,7 +422,7 @@ require("lazy").setup({
 			})
 
 			require("mason-lspconfig").setup({
-				ensure_installed = { "ts_ls", "html", "cssls", "lua_ls", "gopls", "clojure_lsp" },
+				ensure_installed = { "ts_ls", "html", "cssls", "lua_ls", "gopls", "clojure_lsp", "zls" },
 				automatic_installation = true,
 			})
 
