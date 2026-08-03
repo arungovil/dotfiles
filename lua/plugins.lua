@@ -65,7 +65,17 @@ end
 -- Plugin specifications
 require("lazy").setup({
 	-- Color scheme
-	{ "blazkowolf/gruber-darker.nvim" },
+	{
+		"Aejkatappaja/cendre",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("cendre").setup({
+				background = "hard",
+				italic = false,
+			})
+		end,
+	},
 
 	-- REPL
 	{ "Olical/conjure" },
@@ -85,6 +95,7 @@ require("lazy").setup({
 			options = {
 				icons_enabled = false,
 				globalstatus = true,
+				theme = "cendre",
 				component_separators = "▏",
 				section_separators = "",
 				refresh = { statusline = 50 },
@@ -437,6 +448,9 @@ require("lazy").setup({
 		"nvim-tree/nvim-tree.lua",
 		lazy = false,
 		opts = {
+			filters = {
+				custom = { ".*\\.test\\.js$", ".*\\.test\\.ts$" },
+			},
 			hijack_netrw = false,
 			hijack_cursor = false,
 			view = {
@@ -472,7 +486,7 @@ require("lazy").setup({
 })
 
 -- Apply color scheme
-vim.cmd.colorscheme("gruber-darker")
+vim.cmd.colorscheme("cendre")
 
 -- Auto-close nvim-tree before quitting
 vim.api.nvim_create_autocmd("QuitPre", {
