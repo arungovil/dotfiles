@@ -72,7 +72,7 @@ require("lazy").setup({
 		config = function()
 			require("cendre").setup({
 				background = "hard",
-				italic = false,
+				italic_virtual_text = false,
 			})
 		end,
 	},
@@ -132,8 +132,10 @@ require("lazy").setup({
 	{ "windwp/nvim-ts-autotag", config = true },
 	{
 		"nvim-treesitter/nvim-treesitter",
+		tag = "v0.10.0",
 		build = ":TSUpdate",
 		opts = {
+			parser_install_dir = vim.fn.stdpath("data") .. "/site",
 			highlight = { enable = true },
 			indent = { enable = true },
 			ensure_installed = {
@@ -164,7 +166,7 @@ require("lazy").setup({
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
-	{ "norcalli/nvim-colorizer.lua", event = "BufEnter", opts = { "*" } },
+	{ "NvChad/nvim-colorizer.lua", event = "BufEnter", opts = { filetypes = { "*" } } },
 
 	-- Comments
 	{ "numToStr/Comment.nvim", config = true },
